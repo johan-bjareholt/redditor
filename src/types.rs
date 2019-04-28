@@ -100,7 +100,7 @@ impl Comment {
     pub fn permalink(&self) -> String { self.data.permalink.clone() }
     pub fn body(&self) -> String { self.data.body.clone() }
     pub fn replies(&self) -> Vec<&Comment> {
-        let comments : Vec<&Comment> = Vec::new();
+        let mut comments : Vec<&Comment> = Vec::new();
         self.data.replies.data.children.iter().for_each(|c|
             match c {
                 CommentTypes::Comment(c) => comments.push(c),
@@ -131,7 +131,7 @@ impl CommentList {
     }
 
     pub fn comments(&self) -> Vec<&Comment>{
-        let comments : Vec<&Comment> = Vec::new();
+        let mut comments : Vec<&Comment> = Vec::new();
         self.1.data.children.iter().for_each(|c|
             match c {
                 CommentTypes::Comment(c) => comments.push(c),
